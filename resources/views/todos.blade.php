@@ -61,8 +61,16 @@
                                 d.done = $('#datatable-done').val();
                             }
                         },
-                        bFilter: false,
-                        lengthChange: false,
+                        layout: {
+                            top2Start: null,
+                            top2End: null,
+                            topStart: null,
+                            topEnd: null,
+                            bottomStart: null,
+                            bottomEnd: null,
+                            bottom2Start: "info",
+                            bottom2End: "paging"
+                        },
                         columns: [{
                                 data: 'id',
                                 name: 'id',
@@ -215,7 +223,7 @@
 
     <div class="py-12" x-data="init()">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 pb-4">
                 <div class="grid grid-cols-2 px-2">
                     <div>
                         <span class="font-semibold text-l">All Todos</span>
@@ -251,11 +259,11 @@
                     </div>
                     <div class="px-2">
                         <x-input-label for="datatable-search" :value="__('Search')" />
-                        <x-text-input id="datatable-search" x-on:input.debounce.500ms="search(event)"
+                        <x-text-input id="datatable-search" x-on:input.debounce.500ms="search($event)"
                             class="w-[100%] mt-2" />
                     </div>
                 </div>
-                <div class="px-2">
+                <div class="pt-4">
                     <table id="datatable" class="table w-[100%]">
                     </table>
                 </div>
